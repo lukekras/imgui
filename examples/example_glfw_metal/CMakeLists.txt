@@ -3,20 +3,18 @@ include_directories(${IMGUI_BACKENDS_DIR})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-weak")
 
-if (NOT DEFINED IMGUI_BACKEND_SOURCES)
-    set(IMGUI_BACKEND_SOURCES)
-endif ()
-list(APPEND IMGUI_BACKEND_SOURCES ${IMGUI_BACKENDS_DIR}/imgui_impl_metal.mm)
-list(APPEND IMGUI_BACKEND_SOURCES ${IMGUI_BACKENDS_DIR}/imgui_impl_glfw.cpp)
+set(IMGUI_BACKEND_SOURCES
+    ${IMGUI_BACKENDS_DIR}/imgui_impl_opengl3.cpp
+    ${IMGUI_BACKENDS_DIR}/imgui_impl_glfw.cpp
+)
 
-if (NOT DEFINED IMGUI_SOURCES)
-    set(IMGUI_SOURCES)
-endif ()
-list(APPEND IMGUI_SOURCES ${IMGUI_SOURCE_DIR}/imgui.cpp)
-list(APPEND IMGUI_SOURCES ${IMGUI_SOURCE_DIR}/imgui_draw.cpp)
-list(APPEND IMGUI_SOURCES ${IMGUI_SOURCE_DIR}/imgui_widgets.cpp)
-list(APPEND IMGUI_SOURCES ${IMGUI_SOURCE_DIR}/imgui_tables.cpp)
-list(APPEND IMGUI_SOURCES ${IMGUI_SOURCE_DIR}/imgui_demo.cpp)
+set(IMGUI_SOURCES
+    ${IMGUI_SOURCE_DIR}/imgui.cpp
+    ${IMGUI_SOURCE_DIR}/imgui_draw.cpp
+    ${IMGUI_SOURCE_DIR}/imgui_widgets.cpp
+    ${IMGUI_SOURCE_DIR}/imgui_tables.cpp
+    ${IMGUI_SOURCE_DIR}/imgui_demo.cpp
+)
 
 set(app_name example_glfw_metal)
 add_executable(${app_name} main.mm ${IMGUI_SOURCES} ${IMGUI_BACKEND_SOURCES})
