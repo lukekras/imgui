@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-weak")
 set(IMGUI_BACKEND_SOURCES
     ${IMGUI_BACKENDS_DIR}/imgui_impl_opengl3.cpp
     ${IMGUI_BACKENDS_DIR}/imgui_impl_glfw.cpp
+    ${IMGUI_BACKENDS_DIR}/imgui_impl_metal.mm
 )
 
 set(IMGUI_SOURCES
